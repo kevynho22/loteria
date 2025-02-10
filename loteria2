@@ -1,0 +1,82 @@
+<?php 
+function menu(){
+    print("*** Bem vindo a Loteria!!! *** \n\n");
+
+    print  "1 - Mega-Sena\n2 - Quina\n3 - Lotomania\n4 - Lotofácil\n5 - Sair\n";
+    $opcao = readline("escolha um jogo: ");
+
+    if ($opcao == 1){
+
+        $qntdApostas = readline("Quantas apostas você deseja gerar?");
+
+        for ($i=0; $i < $qntdApostas; $i++) { 
+            
+            $qntdNumeros = readline("Quantos numeros você deseja jogar (minimo 6, maximo 15)? ");
+
+            while ($qntdNumeros  < 6 || $qntdNumeros > 15) {
+                $qntdNumeros = readline("O número deve estar entre 6 e 15: ");
+            } 
+
+            sorteador($qntdNumeros, 1, 60);
+            print("\n");
+        
+        }
+
+        //$valor = 
+        
+
+
+        
+    } else if($opcao == 2){
+
+        $qntdApostas = readline("Quantas apostas você deseja gerar?");
+
+        for ($i=0; $i < $qntdApostas; $i++) { 
+            
+            $qntdNumeros = readline("Quantos numeros você deseja jogar (minimo 5, maximo 18)? ");
+
+            while ($qntdNumeros  < 5 || $qntdNumeros > 18) {
+                $qntdNumeros = readline("O número deve estar entre 5 e 18: ");
+            } 
+
+            sorteador($qntdNumeros, 1, 80);
+            print("\n");
+        
+        }
+
+        //$valor = 
+
+    } else if($opcao == 3){
+
+    } else if($opcao == 4){
+
+    } else if($opcao == 5){
+        exit("Obrigado por usar nosso programa!");
+    } else {
+        print("Opção inválida\n");
+
+        menu();
+    }
+
+}
+
+
+function sorteador($qntdNumeros, $min, $max){
+
+    $sorteados = [];
+
+    for ($i=0; $i < $qntdNumeros; $i++) { 
+
+        $sorteado = rand($min, $max);
+        $sorteados[$i] = $sorteado;
+        
+    }
+
+    sort($sorteados);//organizar a lista
+
+    for ($i=0; $i < $qntdNumeros; $i++){
+        print ($sorteados[$i] . " - ");
+    }
+}
+
+menu();
