@@ -85,15 +85,15 @@ function sorteador($qntdNumeros, $min, $max){
 
     $sorteados = [];
 
-  do{ 
-        $sorteado = rand($min, $max);
-        $sorteados[$i] = $sorteado;
+    for ($i=0; $i < $qntdNumeros; $i++) { 
 
+    do{ 
+        $sorteado = rand($min, $max);
+        
     }while (in_array($sorteado, $sorteados));
 
     $sorteados[] = $sorteado;
     }
-
     sort($sorteados);//organizar a lista
 
     for ($i=0; $i < $qntdNumeros; $i++){
