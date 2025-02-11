@@ -47,9 +47,29 @@ function menu(){
         //$valor = 
 
     } else if($opcao == 3){
+        $qntdApostas = readline("Quantas apostas você deseja gerar?");
 
+        for ($i=0; $i < $qntdApostas; $i++) { 
+            
+            $qntdNumeros = readline("Quantos numeros você deseja jogar (minimo 15, maximo 20)? ");
+
+            while ($qntdNumeros  < 15 || $qntdNumeros > 20) {
+                $qntdNumeros = readline("O número deve estar entre 15 e 20: ");
+            } 
+
+            sorteador($qntdNumeros, 1, 50);
+            print("\n");
+        }
     } else if($opcao == 4){
+        
+        $qntdNumeros = readline("Quantos numeros você deseja jogar (minimo 15, maximo 18)? ");
 
+        while ($qntdNumeros  < 15 || $qntdNumeros > 18) {
+            $qntdNumeros = readline("O número deve estar entre 15 e 18: ");
+        } 
+
+        sorteador($qntdNumeros, 1, 25);
+        print("\n");
     } else if($opcao == 5){
         exit("Obrigado por usar nosso programa!");
     } else {
