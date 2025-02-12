@@ -1,5 +1,9 @@
 <?php 
+
 function menu(){
+
+    $total = 0;
+
     print("*** Bem vindo a Loteria!!! *** \n\n");
 
     print  "1 - Mega-Sena\n2 - Quina\n3 - Lotomania\n4 - Lotofácil\n5 - Sair\n";
@@ -11,20 +15,21 @@ function menu(){
 
         for ($i=0; $i < $qntdApostas; $i++) { 
             
-            $qntdNumeros = readline("Quantos numeros você deseja jogar (minimo 6, maximo 15)? ");
+            $qntdNumeros = readline("Quantos numeros você deseja jogar (minimo 6, maximo 20)? ");
 
-            while ($qntdNumeros  < 6 || $qntdNumeros > 15) {
-                $qntdNumeros = readline("O número deve estar entre 6 e 15: ");
+            while ($qntdNumeros  < 6 || $qntdNumeros > 20) {
+                $qntdNumeros = readline("O número deve estar entre 6 e 20: ");
             } 
 
             sorteador($qntdNumeros, 1, 60);
             print("\n");
-        
-        }
 
-        //$valor = 
-        
+            $total = $total + calculaPrecos($qntdNumeros, "mega");
 
+            
+        }   
+
+        print"O valor será R$" . $total . ",00 referente a " . $qntdApostas . " aposta(s)";
 
         
     } else if($opcao == 2){
@@ -33,10 +38,10 @@ function menu(){
 
         for ($i=0; $i < $qntdApostas; $i++) { 
             
-            $qntdNumeros = readline("Quantos numeros você deseja jogar (minimo 5, maximo 18)? ");
+            $qntdNumeros = readline("Quantos numeros você deseja jogar (minimo 5, maximo 15)? ");
 
-            while ($qntdNumeros  < 5 || $qntdNumeros > 18) {
-                $qntdNumeros = readline("O número deve estar entre 5 e 18: ");
+            while ($qntdNumeros  < 5 || $qntdNumeros > 15) {
+                $qntdNumeros = readline("O número deve estar entre 5 e 15: ");
             } 
 
             sorteador($qntdNumeros, 1, 80);
@@ -98,6 +103,29 @@ function sorteador($qntdNumeros, $min, $max){
 
     for ($i=0; $i < $qntdNumeros; $i++){
         print ($sorteados[$i] . " - ");
+    }
+}
+
+menu();
+
+
+function calculaPrecos($quantNumeros, $jogo){
+
+    $listaPrecos  = [
+        "mega"  => [6 => 5, 35, 140, 420, 1050, 2310, 4620, 8580, 15015, 25025, 40040, 61880, 92820, 135660, 193800],
+        "quina" => [5 => 2.50, 15, 52.50, 140, 315, 630, 1155, 1980, 3217.50, 5005, 7507.50],
+        "lotomania"  => []
+    ];
+
+    $valor = $listaPrecos[$jogo][$quantNumeros];
+
+    return $valor;
+
+}
+
+
+
+
     }
 }
 
