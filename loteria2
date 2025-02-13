@@ -114,7 +114,9 @@ function calculaPrecos($quantNumeros, $jogo){
     $listaPrecos  = [
         "mega"  => [6 => 5, 35, 140, 420, 1050, 2310, 4620, 8580, 15015, 25025, 40040, 61880, 92820, 135660, 193800],
         "quina" => [5 => 2.50, 15, 52.50, 140, 315, 630, 1155, 1980, 3217.50, 5005, 7507.50],
-        "lotomania"  => []
+        "lotomania" =>[3
+    ],
+        "lotofácil"  => [15 => 3, 48,408,2.448,11.628,46.512]
     ];
 
     $valor = $listaPrecos[$jogo][$quantNumeros];
@@ -122,11 +124,3 @@ function calculaPrecos($quantNumeros, $jogo){
     return $valor;
 
 }
-
-
-
-
-    }
-}
-
-menu();
